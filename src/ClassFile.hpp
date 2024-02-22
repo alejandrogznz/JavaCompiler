@@ -18,9 +18,16 @@ class ClassFile
         ClassFile(std::string filename)
         {
             std::cout << "Generating ClassFile from: " << filename << std::endl; 
+
+            std::ifstream fs("Test.class", std::ios::in | std::ios::binary);
+            
+            magic_number = readUIntFromFile(fs);
+            std::cout << std::hex << magic_number << std::endl;
         }
 
     private:
+
         unsigned int magic_number;
+        
 };
 #endif // JAVACOMPILER_SRC_CLASSFILE_HPP
