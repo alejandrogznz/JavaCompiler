@@ -1,8 +1,8 @@
-COMPILER= g++ -std=c++11
+COMPILER= g++ -std=c++17
 COMPILE_FLAGS=
 COMPILE=$(COMPILER) $(COMPILE_FLAGS)
 
-EXE=mysystem
+EXE=jcompiler
 SRC_DIR=src
 SRC= $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_DIR=obj
