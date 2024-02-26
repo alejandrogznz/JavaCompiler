@@ -12,7 +12,7 @@ namespace JC
     }
     
     u16 Stream::read_u16()
-    {
+    { 
         return read_integer<u16, 2>();
     }
 

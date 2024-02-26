@@ -19,6 +19,7 @@ namespace JC
         u32 read_u32();
 
         private:
+
         std::istream& m_stream;
         std::size_t m_pos = 0;
 
@@ -28,8 +29,6 @@ namespace JC
         Integer read_integer();
 
         std::istream& stream();
-        
-
     };
 }
 
