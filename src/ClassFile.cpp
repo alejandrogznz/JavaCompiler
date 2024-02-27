@@ -22,4 +22,9 @@ ClassFile::ClassFile(std::string filename)
     std::cout << std::hex << cpool_count << std::endl;
     
     constant_pool = JC::ConstantPool(stream, cpool_count);
+    // Read all the CP entries in the constant pool
+    for (size_t i = 0; i < cpool_count; ++i)
+    {
+    //    constant_pool.push_back(JC::ConstantPool.readEntry(stream));
+    }
 }

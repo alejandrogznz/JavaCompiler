@@ -21,6 +21,18 @@ namespace JC
         return read_integer<u32, 4>();
     }
 
+    char * Stream::read_string(size_t n)
+    {
+        char * result = new char[n + 1];
+        result[n] = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            result[i] = get();
+        }
+        std::cout << result << std::endl;
+        return result;
+    }
+
     unsigned char Stream::get()
     {
         unsigned char result = stream().get();

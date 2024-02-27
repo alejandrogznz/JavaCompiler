@@ -3,6 +3,7 @@
 
 #include "typedefs.hpp"
 #include <istream>
+#include <iostream>
 
 namespace JC
 {
@@ -17,6 +18,8 @@ namespace JC
         u16 read_u16();
 
         u32 read_u32();
+
+        char * read_string(size_t n);
 
         private:
 
