@@ -1,75 +1,77 @@
 #ifndef JAVACOMPILER_SRC_CONSTANT_POOL_ENTRY
 #define JAVACOMPILER_SRC_CONSTANT_POOL_ENTRY
 
-#include "typedefs.hpp"
 #include "Stream.hpp"
+#include "typedefs.hpp"
 #include <fstream>
 #include <iostream>
 #include <vector>
 
-namespace JC
-{
-    class CPEntry
-    {
-        public:
+namespace JC {
 
-        CPEntry(u8 tag);
+class CPEntry {
+public:
+  CPEntry(u8 tag);
 
-        CPEntry(JC::Stream &stream);
+  CPEntry(JC::Stream &stream);
 
-        static CPEntry* getEntry(JC::Stream &stream);
+  static CPEntry *getEntry(JC::Stream &stream);
 
-        private:
-        u8 tag;
-    };
+private:
+  u8 tag;
+};
 
-    class MethodRef: public CPEntry
-    {
-        public:
-        MethodRef(u8 tag, Stream &stream);
+class MethodRef : public CPEntry {
+public:
+  MethodRef(u8 tag, Stream &stream);
 
-        private:
-        u16 class_index;
-        u16 name_and_type_index;
-    };
+private:
+  u16 class_index;
+  u16 name_and_type_index;
+};
 
+class FieldRef : public CPEntry {
+public:
+  FieldRef(u8 tag, Stream &stream);
 
-    class FieldRef: public CPEntry
-    {
-        public:
-        FieldRef(u8 tag, Stream &stream);
+private:
+  u16 class_index;
+  u16 name_and_type_index;
+};
 
-        private:
-        u16 class_index;
-        u16 name_and_type_index;
-    };
-    
-    class ConstantString: public CPEntry
-    {
-        public:
-        ConstantString(u8 tag, Stream &stream);
+class ConstantString : public CPEntry {
+public:
+  ConstantString(u8 tag, Stream &stream);
 
-        private:
-        u16 string_index;
-    };
+private:
+  u16 string_index;
+};
 
-    class ConstantClass: public CPEntry
-    {
-        public:
-        ConstantClass(u8 tag, Stream &stream);
+class ConstantClass : public CPEntry {
+public:
+  ConstantClass(u8 tag, Stream &stream);
 
-        private:
-        u16 name_index;
-    };
+private:
+  u16 name_index;
+};
 
-    class ConstantUtf8: public CPEntry
-    {
-        public:
-        ConstantUtf8(u8 tag, Stream &stream);
+class ConstantUtf8 : public CPEntry {
+public:
+  ConstantUtf8(u8 tag, Stream &stream);
 
-        private:
-        u16 length;
-        char * bytes;
-    };
-}
-#endif //JAVACOMPILER_SRC_CONSTANT_POOL_ENTRY
+private:
+  u16 length;
+  char *bytes;
+};
+
+class Constant_NameAndType : public CPEntry {
+public:
+  Constant_NameAndType(u8 tag, Stream &stream);
+
+private:
+  u16 name_index;
+  u16 descriptor_index;
+};
+
+} // namespace JC
+#endif // JAVACOMPILER_SRC_CONSTANT_POOL_ENTRY
